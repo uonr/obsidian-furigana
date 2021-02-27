@@ -1,7 +1,7 @@
 {
   "name": "obsidian-furigana",
   "version": "0.0.1",
-  "description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+  "description": "Helper plugin for furigana and <ruby>",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",

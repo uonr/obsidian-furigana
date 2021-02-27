@@ -3,7 +3,7 @@
 	"name": "Furigana",
 	"version": "0.0.1",
 	"minAppVersion": "0.11.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
+	"description": "Helper plugin for furigana and <ruby>",
 	"author": "Koppa",
 	"authorUrl": "https://github.com/uonr",
 	"isDesktopOnly": false

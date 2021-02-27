@@ -13,10 +13,25 @@ export default class AliasPlugin extends Plugin {
 				const editor = view.sourceMode.cmEditor;
 				if (!checking) {
 					const selected = editor.getSelection();
-					editor.replaceSelection(`<ruby>${selected}<rt></rt></ruby>`, "end");
+					// check whether selected text already in a <ruby> tag.
 					const cursor = editor.getCursor();
-					cursor.ch -= '</rt></ruby>'.length;
-					editor.setCursor(cursor);
+					const lineText = editor.getLine(cursor.line);
+					const rubyTagMatch = lineText.match(/<ruby\>(.*)<\/ruby>/);
+					let alreadyInRuby = (
+						rubyTagMatch &&
+						rubyTagMatch.index &&
+						rubyTagMatch.index < cursor.ch &&
+						rubyTagMatch.index + rubyTagMatch[0].length > cursor.ch
+					);
+					let head = `${selected}<rt>`;
+					let tail = "</rt>";
+					if (!alreadyInRuby) {
+						head = `<ruby>${head}`;
+						tail = `${tail}</ruby>`;
+					}
+					editor.replaceSelection(head + tail, "end");
+					const { line, ch } = editor.getCursor();
+					editor.setCursor({ line, ch: ch - tail.length });
 				}
 				return true;
 			}

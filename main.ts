@@ -3,7 +3,7 @@ import { Plugin, MarkdownView, Menu, Editor } from 'obsidian';
 const addRubyTag = (editor: Editor, selected: string) => {
 	const cursor = editor.getCursor();
 	const lineText = editor.getLine(cursor.line);
-	const rubyTagMatch = lineText.match(/<ruby\>(.*)<\/ruby>/);
+	const rubyTagMatch = lineText.match(/<ruby\>(.*?)<\/ruby>/);
 	let alreadyInRuby = (
 		rubyTagMatch &&
 		rubyTagMatch.index &&

@@ -1,6 +1,6 @@
 {
   "name": "obsidian-furigana",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Helper plugin for furigana and <ruby>",
   "main": "main.js",
   "scripts": {
